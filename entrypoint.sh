@@ -47,7 +47,8 @@ echo "---------------"
 scm_url="https://github.com/$GITHUB_REPOSITORY"
 echo "scm_url is $scm_url"
 
-scm_branch="pull/$pull_request_event/head"
+# scm_branch="pull/$pull_request_event/head"
+scm_branch="main"
 echo "scm_branch is $scm_branch"
 
 # scm_refspec="refs/pull/*:refs/remotes/origin/pull/*"
@@ -189,7 +190,7 @@ tee playbook.yml << EOF
 #             scm_update_on_launch: True
 #             allow_override: True
 #             validate_certs: "$CONTROLLER_VERIFY_SSL"
-# 
+#
 #         # This task is only updating ask_scm_branch_on_launch
 #         - name: update job template to turn ask_scm_branch_on_launch
 #           awx.awx.job_template:
@@ -252,7 +253,7 @@ tee playbook.yml << EOF
             timeout: 3600
             validate_certs: "$CONTROLLER_VERIFY_SSL"
           register: job_wait_result
-          
+
         - name: Debug Job Wait Result
           ansible.builtin.debug:
             var: job_wait_result
