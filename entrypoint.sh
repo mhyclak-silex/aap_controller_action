@@ -294,7 +294,7 @@ EOF
 
 echo "AAP Github Action - Executing Automation Job on Automation controller"
 
-/usr/local/bin/ansible-playbook playbook.yml
+/usr/local/bin/ansible-playbook -v2 playbook.yml
 
 if [ $? -eq 0 ]; then
     echo "Ansible Github Action Job has executed successfully"
