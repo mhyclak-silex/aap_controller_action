@@ -247,6 +247,11 @@ tee playbook.yml << EOF
             job_id: "{{ job_output.id }}"
             timeout: 3600
             validate_certs: "$CONTROLLER_VERIFY_SSL"
+          register: job_wait_result
+          
+        - name: Debug Job Wait Result
+          ansible.builtin.debug:
+            var: job_wait_result
 
         - name: retrieve job info
           when: job_template_var|length > 0
