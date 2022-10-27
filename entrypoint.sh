@@ -261,7 +261,7 @@ tee playbook.yml << EOF
         - name: retrieve job info
           when: job_template_var|length > 0
           uri:
-            url: https://$CONTROLLER_HOST/api/v2/jobs/{{ job_output.id }}/stdout/?format=json
+            url: $CONTROLLER_HOST/api/v2/jobs/{{ job_output.id }}/stdout/?format=json
             method: GET
             user: "$CONTROLLER_USERNAME"
             password: "$CONTROLLER_PASSWORD"
