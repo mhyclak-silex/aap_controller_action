@@ -116,6 +116,8 @@ tee playbook.yml << EOF
               - scm_track_submodules: "{{ project_info[0].scm_track_submodules }}"
               - scm_update_on_launch: "{{ project_info[0].scm_update_on_launch }}"
               - allow_override: "{{ project_info[0].allow_override }}"
+          when:
+            - project_info[0] is defined
 
         - name: print out existing job template settings to terminal
           debug:
@@ -158,6 +160,8 @@ tee playbook.yml << EOF
               - verbosity: "{{ template_info[0].verbosity }}"
               - wobhook_credential: "{{ template_info[0].webhook_credential | default(omit, true) }}"
               - webhook_service: "{{ template_info[0].webhook_service }}"
+          when:
+            - template_info[0]
 
         - name: figure out creds for JT
           set_fact:
